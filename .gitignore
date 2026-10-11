@@ -1,0 +1,10 @@
+# Source files for the renders, not part of the live site
+_source/
+
+# Local tooling
+.playwright-cli/
+.claude/
+
+# Upload-ready copy of the site
+deploy/
+verkan-site.zip

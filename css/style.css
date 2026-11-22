@@ -728,10 +728,7 @@ h1, h2, h3, p, dl, dd, ol, ul, figure, blockquote { margin: 0; }
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  border-radius: 28px;
   overflow: hidden;
-  background: #F12A32;
-  box-shadow: 0 30px 60px -38px rgba(126, 10, 16, 0.55);
 }
 .vouches__render img {
   position: relative;
@@ -741,6 +738,7 @@ h1, h2, h3, p, dl, dd, ol, ul, figure, blockquote { margin: 0; }
   object-fit: contain;
   object-position: bottom center;
   margin-bottom: -2%;
+  background: transparent;
 }
 @media (max-width: 899px) {
   .vouches__render { min-height: 420px; }
@@ -867,7 +865,7 @@ h1, h2, h3, p, dl, dd, ol, ul, figure, blockquote { margin: 0; }
 
 .week-stage {
   --labels: 70px;
-  --platform-h: clamp(120px, 16vw, 220px);
+  --platform-h: clamp(84px, 11.2vw, 154px);
   position: relative;
   container-type: inline-size;
   margin-top: clamp(4rem, 9vw, 8rem);
@@ -876,8 +874,9 @@ h1, h2, h3, p, dl, dd, ol, ul, figure, blockquote { margin: 0; }
 .week-stage::before {
   content: "";
   position: absolute;
-  left: 0;
-  right: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
   bottom: calc(var(--labels) - 12px);
   height: var(--platform-h);
   border-radius: 22px;
@@ -913,9 +912,9 @@ h1, h2, h3, p, dl, dd, ol, ul, figure, blockquote { margin: 0; }
 /* The sit render perches on the right end of the row */
 .week-stage__sit {
   position: absolute;
-  right: -1%;
-  bottom: calc(var(--labels) + var(--platform-h) * 0.5);
-  width: min(42%, 560px);
+  right: 1%;
+  bottom: calc(var(--labels) - 8px);
+  width: min(32%, 420px);
   pointer-events: none;
   z-index: var(--z-content);
 }
@@ -926,7 +925,7 @@ h1, h2, h3, p, dl, dd, ol, ul, figure, blockquote { margin: 0; }
 }
 @media (max-width: 767px) {
   .week-stage { --labels: 38px; padding-top: 46vw; }
-  .week-stage__sit { width: 74%; right: -2%; }
+  .week-stage__sit { width: 58%; right: -1%; bottom: calc(var(--labels) - 2px); }
   .day__name { margin-top: 10px; padding: 2px 7px; font-size: 0.75rem; }
   .day__note { display: none; }
 }

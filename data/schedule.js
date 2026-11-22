@@ -1,10 +1,10 @@
-// When Lance is usually around. Times are in Montreal / Toronto time (ET).
+// Lance's schedule in New York (Eastern Time).
 //
 // days: 0 = Sunday, 1 = Monday, 2 = Tuesday ... 6 = Saturday
-// offBlocks: regular times you're away. start/end are 24-hour clock hours.
+// offBlocks: regular times you're away. Empty array means available every day!
 
 export const schedule = {
-  timezone: "America/Toronto",
+  timezone: "America/New_York",
   tzLabel: "ET",
-  offBlocks: [{ day: 2, start: 18, end: 21 }], // Tuesday, 6 PM to 9 PM
+  offBlocks: [],
 };

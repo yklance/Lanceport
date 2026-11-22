@@ -1,4 +1,4 @@
-// Live Toronto clock, current status, the week as bricks, and the Tuesday gap in the visitor's own time.
+// Live New York clock, current status, and the week schedule.
 
 const DAY_SHORT = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const DAY_LONG = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -55,7 +55,7 @@ function nextOccurrence(tz, weekday, hour) {
 function fmtHour(h) {
   const suffix = h % 24 >= 12 ? "PM" : "AM";
   const hr = h % 12 === 0 ? 12 : h % 12;
-  return `${hr} ${suffix}`;
+  return `${hr} ${suffix}`;
 }
 
 function brickPicture(color, className = "") {
@@ -81,7 +81,7 @@ function buildWeek(weekEl, schedule) {
   const frag = document.createDocumentFragment();
 
   for (const d of WEEK_ORDER) {
-    const blocks = schedule.offBlocks.filter((b) => b.day === d);
+    const blocks = schedule.offBlocks ? schedule.offBlocks.filter((b) => b.day === d) : [];
     const li = document.createElement("li");
     li.className = "day";
 
@@ -99,7 +99,7 @@ function buildWeek(weekEl, schedule) {
     note.className = "day__note";
     const visible = blocks.length
       ? blocks.map((b) => `Off ${fmtHour(b.start)} to ${fmtHour(b.end)}`).join(", ")
-      : "Around";
+      : "Available";
     note.textContent = visible;
     note.setAttribute("aria-hidden", "true");
 
@@ -107,7 +107,7 @@ function buildWeek(weekEl, schedule) {
     spoken.className = "visually-hidden";
     spoken.textContent = blocks.length
       ? `${DAY_LONG[d]}: away ${blocks.map((b) => `${fmtHour(b.start)} to ${fmtHour(b.end)} ${schedule.tzLabel}`).join(", ")}, around the rest of the day`
-      : `${DAY_LONG[d]}: around`;
+      : `${DAY_LONG[d]}: available`;
 
     li.append(brick, name, note, spoken);
     frag.append(li);
@@ -119,6 +119,7 @@ function buildWeek(weekEl, schedule) {
 }
 
 function localGapText(schedule) {
+  if (!schedule.offBlocks || !schedule.offBlocks.length) return "";
   const block = schedule.offBlocks[0];
   if (!block) return "";
   const visitorZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -148,9 +149,14 @@ export function startAvailability(root, schedule) {
   if (gapEl) gapEl.textContent = localGapText(schedule);
 
   const clockFmt = new Intl.DateTimeFormat("en-US", {
-    timeZone: schedule.timezone,
+    timeZone: schedule.timezone || "America/New_York",
     hour: "numeric",
     minute: "2-digit",
+  });
+
+  const tzFmt = new Intl.DateTimeFormat("en-US", {
+    timeZone: schedule.timezone || "America/New_York",
+    timeZoneName: "short",
   });
 
   function tick() {
@@ -158,19 +164,20 @@ export function startAvailability(root, schedule) {
     clockEl.textContent = clockFmt.format(now);
     clockEl.dateTime = now.toISOString();
 
-    const p = partsIn(schedule.timezone, now);
+    const p = partsIn(schedule.timezone || "America/New_York", now);
     for (const d of WEEK_ORDER) {
       if (d === p.weekday) days[d].setAttribute("aria-current", "date");
       else days[d].removeAttribute("aria-current");
     }
 
-    const block = schedule.offBlocks.find((b) => b.day === p.weekday && p.hour >= b.start && p.hour < b.end);
+    const currentTzAbbr = tzFmt.formatToParts(now).find((x) => x.type === "timeZoneName")?.value || "ET";
+    const block = schedule.offBlocks && schedule.offBlocks.find((b) => b.day === p.weekday && p.hour >= b.start && p.hour < b.end);
     const state = block ? "off" : "on";
     if (statusEl.dataset.state !== state) {
       statusEl.dataset.state = state;
       statusText.textContent = block
-        ? `Away right now, back around ${fmtHour(block.end)} ${schedule.tzLabel}`
-        : "Usually around";
+        ? `Away right now, back around ${fmtHour(block.end)} ${currentTzAbbr}`
+        : "Available now";
     }
   }
 
@@ -181,7 +188,7 @@ export function startAvailability(root, schedule) {
     timer = setTimeout(() => {
       tick();
       schedule60();
-    }, 60000 - (Date.now() % 60000) + 50);
+    }, 10000); // Check every 10 seconds for pinpoint accuracy
   };
   schedule60();
   document.addEventListener("visibilitychange", () => {

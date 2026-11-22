@@ -56,7 +56,7 @@ Shadows are tinted with Cola Ink or Cola Red Deep, never neutral black.
 
 - **Display:** Big Shoulders Display, weight 900, line-height 0.86 to 0.9, uppercase only for the big lockups (VERKAN, the three numbers, LET'S BUILD IT., section titles). Tracking 0 to -0.01em. Sized in `vw` so the lockups span the width.
 - **Body:** Geist 400/500/600. 1rem to 1.125rem, line-height 1.55, max 62ch. Headings that are sentences stay in sentence case.
-- **Mono:** Geist Mono 500 for the live Toronto clock and time values, tabular numbers.
+- **Mono:** Geist Mono 500 for the live New York clock and time values, tabular numbers.
 - **Banned:** Inter, Roboto, Arial, Unbounded (it wrapped the old hero to 4 lines), any serif.
 
 ## 4. Component Stylings
@@ -76,11 +76,11 @@ Shadows are tinted with Cola Ink or Cola Red Deep, never neutral black.
 - Max content width 1360px, 16px side gutter on phones, `clamp(20px, 4vw, 56px)` above.
 - Section rhythm `clamp(6rem, 14vw, 12rem)` top and bottom, bottom slightly larger.
 - Hero: full-bleed `min-height: 100dvh`. Giant type centered behind, figure centered slightly right and anchored to the floor, copy block bottom left.
-- Intro: one large statement with an inline pill image, then three numbers on an offset 3-column grid (not cards).
+- Intro: one large statement with an inline pill image, then two statistics on an offset grid (not cards).
 - What I do: gapless 4-column bento, dense flow, exactly 5 cells.
-- Vouches: 5/7 split. Left column pinned (title and the point render), right column of four quotes scrolls past.
-- Availability: clock and status left, note right, then the full-width brick row with the sit render perched on it.
-- Closing: red field, giant type behind the wave render, CTA pill, then a one-line footer.
+- Vouches: 5/7 split. Left column pinned (title and the point render), with Cw’s review in the right column.
+- Availability: New York clock and status left, note right, then the full-width availability row with the car scene.
+- Closing: red field, giant type behind Lance’s avatar, CTA pill, then a one-line footer.
 - Every multi-column layout becomes a single column under 768px. No horizontal scroll at 320px.
 
 ## 6. Motion & Interaction

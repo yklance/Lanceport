@@ -9,11 +9,11 @@ Design rules and the reasoning behind them are in `DESIGN.md`.
 - [css/style.css](file:///c:/Users/binon/Downloads/new%20lance%20port%20discord%202.0/css/style.css) all styles (tokens at the top)
 - [js/main.js](file:///c:/Users/binon/Downloads/new%20lance%20port%20discord%202.0/js/main.js) starts everything: vouches, availability, menu, motion
 - [js/vouches.js](file:///c:/Users/binon/Downloads/new%20lance%20port%20discord%202.0/js/vouches.js) builds the vouch list from `data/vouches.js`
-- [js/availability.js](file:///c:/Users/binon/Downloads/new%20lance%20port%20discord%202.0/js/availability.js) live Montreal / Toronto clock, status, the week of bricks
+- [js/availability.js](file:///c:/Users/binon/Downloads/new%20lance%20port%20discord%202.0/js/availability.js) live New York clock, status, and weekly availability
 - [js/nav.js](file:///c:/Users/binon/Downloads/new%20lance%20port%20discord%202.0/js/nav.js) mobile menu (hamburger to X, full-screen overlay, focus trap, Escape to close)
 - [js/motion.js](file:///c:/Users/binon/Downloads/new%20lance%20port%20discord%202.0/js/motion.js) GSAP, ScrollTrigger and Lenis smooth scroll
 - [data/vouches.js](file:///c:/Users/binon/Downloads/new%20lance%20port%20discord%202.0/data/vouches.js) the vouches
-- [data/schedule.js](file:///c:/Users/binon/Downloads/new%20lance%20port%20discord%202.0/data/schedule.js) your hours (Montreal / Toronto ET time)
+- [data/schedule.js](file:///c:/Users/binon/Downloads/new%20lance%20port%20discord%202.0/data/schedule.js) availability in New York (Eastern Time)
 - [assets/renders/](file:///c:/Users/binon/Downloads/new%20lance%20port%20discord%202.0/assets/renders/) the R6 renders (hero, wave, point, jump, sit, headshot, bricks)
 - [assets/textures/baseplate.png](file:///c:/Users/binon/Downloads/new%20lance%20port%20discord%202.0/assets/textures/baseplate.png) classic Roblox stud tile
 - [assets/icons/](file:///c:/Users/binon/Downloads/new%20lance%20port%20discord%202.0/assets/icons/) favicon, apple touch icon, arrow icons
@@ -45,7 +45,7 @@ Then open `http://localhost:8080` in your web browser.
 ## Change Hours & Availability
 
 Edit `offBlocks` in [data/schedule.js](file:///c:/Users/binon/Downloads/new%20lance%20port%20discord%202.0/data/schedule.js).
-Hours are 24-hour clock, days are 0 = Sunday to 6 = Saturday. Days with off blocks show the half amber brick.
+Hours are 24-hour clock, days are 0 = Sunday to 6 = Saturday. The clock uses `America/New_York` and automatically follows daylight saving time. An empty `offBlocks` array means available every day.
 
 ## Publish to GitHub Pages
 

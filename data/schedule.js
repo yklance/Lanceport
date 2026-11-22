@@ -1,4 +1,4 @@
-// When verkan is usually around. Times are in Toronto time (ET).
+// When Lance is usually around. Times are in Montreal / Toronto time (ET).
 //
 // days: 0 = Sunday, 1 = Monday, 2 = Tuesday ... 6 = Saturday
 // offBlocks: regular times you're away. start/end are 24-hour clock hours.

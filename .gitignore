@@ -8,3 +8,6 @@ _source/
 # Upload-ready copy of the site
 deploy/
 verkan-site.zip
+
+cloudflared.exe
+*.log

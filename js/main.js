@@ -11,7 +11,7 @@ function init() {
   const avail = document.querySelector("#availability");
   if (avail) startAvailability(avail, schedule);
   initNav();
-  // Motion last, so it can find the vouches and bricks built above.
+  // Motion last, so it can find the vouches and availability built above.
   initMotion();
 }
 

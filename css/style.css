@@ -1,4 +1,4 @@
-/* verkan portfolio. Design rules live in DESIGN.md. */
+/* Lance portfolio. Design rules live in DESIGN.md. */
 
 /* ---------- Tokens ---------- */
 :root {
@@ -396,7 +396,7 @@ h1, h2, h3, p, dl, dd, ol, ul, figure, blockquote { margin: 0; }
 .hero__figure-wrap {
   position: absolute;
   bottom: -4dvh;
-  left: 61%;
+  left: 64%;
   z-index: 1;
   height: min(102dvh, 1160px);
   aspect-ratio: 4 / 5;
@@ -637,7 +637,7 @@ h1, h2, h3, p, dl, dd, ol, ul, figure, blockquote { margin: 0; }
   width: 58%;
   pointer-events: none;
 }
-.cell__render img { transition: transform 0.9s var(--ease); }
+.cell__render img { width: 100%; height: auto; border-radius: 18px; object-fit: contain; transition: transform 0.9s var(--ease); }
 .cell--manage:hover .cell__render img { transform: translateY(-8px) scale(1.02); }
 
 /* Community: red */
@@ -658,12 +658,9 @@ h1, h2, h3, p, dl, dd, ol, ul, figure, blockquote { margin: 0; }
   letter-spacing: -0.01em;
 }
 
-/* UI: classic baseplate studs fading in from the bottom */
+/* UI: clean solid presentation */
 .cell--social .cell__core {
-  background:
-    linear-gradient(to bottom, var(--paper) 38%, rgba(251, 251, 251, 0.62) 68%, rgba(251, 251, 251, 0.38) 100%),
-    url("../assets/textures/baseplate.png") 0 0 / 152px 152px,
-    #E8E8E7;
+  background: #E8E8E7;
 }
 
 /* AI workflows: wide ink strip */
@@ -724,12 +721,29 @@ h1, h2, h3, p, dl, dd, ol, ul, figure, blockquote { margin: 0; }
   color: var(--ink-muted);
 }
 .vouches__render {
+  position: relative;
   margin-top: 1rem;
   margin-left: -6%;
+  min-height: 520px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  border-radius: 28px;
+  overflow: hidden;
+  background: #F12A32;
+  box-shadow: 0 30px 60px -38px rgba(126, 10, 16, 0.55);
 }
 .vouches__render img {
-  width: auto;
-  max-height: min(56vh, 620px);
+  position: relative;
+  z-index: 1;
+  width: min(78%, 430px);
+  max-height: min(48vh, 520px);
+  object-fit: contain;
+  object-position: bottom center;
+  margin-bottom: -2%;
+}
+@media (max-width: 899px) {
+  .vouches__render { min-height: 420px; }
 }
 
 .vouches__list {
@@ -852,13 +866,27 @@ h1, h2, h3, p, dl, dd, ol, ul, figure, blockquote { margin: 0; }
 .avail__note [data-local-gap] { color: var(--ink); }
 
 .week-stage {
-  --labels: 70px;              /* day name + note under each brick */
-  --brick-h: calc(100cqw / 7 * 0.507);
+  --labels: 70px;
+  --platform-h: clamp(120px, 16vw, 220px);
   position: relative;
   container-type: inline-size;
   margin-top: clamp(4rem, 9vw, 8rem);
   padding-top: clamp(120px, 21vw, 300px);
 }
+.week-stage::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(var(--labels) - 12px);
+  height: var(--platform-h);
+  border-radius: 22px;
+  background: #F12A32;
+  box-shadow: 0 28px 50px -34px rgba(126, 10, 16, 0.7);
+  z-index: 0;
+}
+.week-stage .week,
+.week-stage__sit { z-index: 1; }
 .week {
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
@@ -867,19 +895,6 @@ h1, h2, h3, p, dl, dd, ol, ul, figure, blockquote { margin: 0; }
   list-style: none;
 }
 .day { position: relative; display: flex; flex-direction: column; align-items: center; }
-.day__brick {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 1000 / 507;
-  filter: drop-shadow(0 16px 14px rgba(126, 10, 16, 0.16));
-}
-.day__brick img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
-.day__brick .day__half img { clip-path: inset(0 0 0 50%); }
 .day__name {
   margin-top: 16px;
   padding: 3px 12px;
@@ -899,11 +914,12 @@ h1, h2, h3, p, dl, dd, ol, ul, figure, blockquote { margin: 0; }
 .week-stage__sit {
   position: absolute;
   right: -1%;
-  bottom: calc(var(--labels) + var(--brick-h) * 0.5);
+  bottom: calc(var(--labels) + var(--platform-h) * 0.5);
   width: min(42%, 560px);
   pointer-events: none;
   z-index: var(--z-content);
 }
+.week-stage__sit img { width: 100%; height: auto; object-fit: contain; }
 
 @media (max-width: 899px) {
   .avail__top { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
@@ -1016,7 +1032,7 @@ h1, h2, h3, p, dl, dd, ol, ul, figure, blockquote { margin: 0; }
 .motion [data-number] { transform: translateY(102%); }
 .motion [data-cell] { opacity: 0; transform: translateY(48px); }
 .motion .vouch { opacity: 0; transform: translateY(40px); }
-.motion .day__brick { opacity: 0; transform: translateY(-48px); }
+.motion .day__marker { opacity: 0; transform: translateY(-48px); }
 .motion .week-stage__sit { opacity: 0; transform: translateY(-36px); }
 
 @media (prefers-reduced-motion: reduce) {

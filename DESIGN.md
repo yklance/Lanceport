@@ -1,4 +1,4 @@
-# Design System: verkan
+# Design System: Lance
 
 ## 0. Design read and plan
 
@@ -31,7 +31,7 @@ gsap: scrubbing text reveal, scroll pinning (+ hero depth parallax)
 
 ## 1. Visual Theme & Atmosphere
 
-A loud, single-minded campaign page. The top and bottom of the page are a deep cola red field with a soft radial light and fine grain, like a studio sweep. Enormous condensed white type ("VERKAN", "LET'S BUILD IT.") sits behind the R6 avatar, who stands in front and overlaps the letters, so the character is the product shot. Between the red bookends the page goes cool white with dark cola brown ink, and stays there: one theme, no surprise dark bands. The figure always belongs to the background composition, never to a boxed card. Motion feels heavy and physical: things rise like a part being placed in Studio, never bounce.
+A loud, single-minded campaign page. The top and bottom of the page are a deep cola red field with a soft radial light and fine grain, like a studio sweep. Enormous condensed white type ("LANCE", "LET'S BUILD IT.") sits behind the R6 avatar, who stands in front and overlaps the letters, so the character is the product shot. Between the red bookends the page goes cool white with dark cola brown ink, and stays there: one theme, no surprise dark bands. The figure always belongs to the background composition, never to a boxed card. Motion feels heavy and physical: things rise like a part being placed in Studio, never bounce.
 
 - Density: Art Gallery Airy (3)
 - Variance: Offset Asymmetric to Artsy (8)
@@ -54,7 +54,7 @@ Shadows are tinted with Cola Ink or Cola Red Deep, never neutral black.
 
 ## 3. Typography Rules
 
-- **Display:** Big Shoulders Display, weight 900, line-height 0.86 to 0.9, uppercase only for the big lockups (VERKAN, the three numbers, LET'S BUILD IT., section titles). Tracking 0 to -0.01em. Sized in `vw` so the lockups span the width.
+- **Display:** Big Shoulders Display, weight 900, line-height 0.86 to 0.9, uppercase only for the big lockups (LANCE, the three numbers, LET'S BUILD IT., section titles). Tracking 0 to -0.01em. Sized in `vw` so the lockups span the width.
 - **Body:** Geist 400/500/600. 1rem to 1.125rem, line-height 1.55, max 62ch. Headings that are sentences stay in sentence case.
 - **Mono:** Geist Mono 500 for the live New York clock and time values, tabular numbers.
 - **Banned:** Inter, Roboto, Arial, Unbounded (it wrapped the old hero to 4 lines), any serif.
@@ -66,7 +66,7 @@ Shadows are tinted with Cola Ink or Cola Red Deep, never neutral black.
 - **Bezel card (double bezel):** outer shell with a hairline ring, 6px padding, 28px radius, faint ink tint; inner core with its own fill, an inset top highlight and a 22px radius (concentric). Used only in the bento, where the cards are the content.
 - **Chips:** 32px pills, hairline ring, Geist 500 at 0.8125rem. On red, a white 14% fill.
 - **Squircle headshots:** 64px, `border-radius: 34%`, Roblox headshots on a Cool White fill.
-- **Studded bricks:** the week row. Classic Roblox parts rendered in Blender with verkan's own 2008-era Studs surface (diffuse multiplied over the part colour, plus its normal map): Bright red #C4281C, and Can Amber for days with an off block. A day with an off block shows the amber sprite clipped to its right half. The UI card uses a top-down render of the same Studs surface as a baseplate tile.
+- **Red platform:** the availability row uses a clean, solid red platform. Each day remains clearly labeled and accessible.
 - **Nav:** floating glass pill 16px below the top edge, dark ink glass (`rgba(30,11,7,0.55)` with 18px blur and saturate), white text, inner 1px highlight. Height 56px. Mobile: a hamburger whose two bars rotate into an X, opening a full-screen ink glass overlay; links slide up from a mask with a 60ms stagger.
 - **Status:** a single amber or white dot that means something (around or away), next to plain text.
 - **Loading:** images reserve their box with width and height; the clock renders server-free from the first frame, no spinners anywhere.
@@ -86,11 +86,11 @@ Shadows are tinted with Cola Ink or Cola Red Deep, never neutral black.
 ## 6. Motion & Interaction
 
 - Engine: GSAP 3 + ScrollTrigger and Lenis smooth scroll, loaded from jsDelivr with pinned versions. Lenis drives ScrollTrigger through the GSAP ticker. Never `window.addEventListener('scroll')`.
-- Hero load: VERKAN letters rise out of a mask with a stagger, the figure lifts in, copy follows.
+- Hero load: LANCE letters rise out of a mask with a stagger, the figure lifts in, copy follows.
 - Hero depth: pointer parallax, type moves least, figure moves most (`gsap.quickTo`). Off on touch.
 - Hero exit: as the hero scrolls away the figure rises and the type sinks, scrubbed.
 - Intro: words scrub from 12% to 100% opacity in reading order.
-- Bento and bricks: fade-up batches; bricks drop into place one by one like parts being placed.
+- Bento and availability: fade-up batches; the platform and avatar enter cleanly.
 - Vouches: left column pinned for the length of the quotes. The pin is `position: sticky` rather than a ScrollTrigger pin: same result, no layout work in JS, and it keeps working without scripts. The point render scales up as the section arrives.
 - Closing: the wave render rises in as the section enters.
 - Easing: `power3.out`, `expo.out` and `cubic-bezier(0.32, 0.72, 0, 1)`. No linear, no bounce.

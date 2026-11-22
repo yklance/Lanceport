@@ -58,22 +58,11 @@ function fmtHour(h) {
   return `${hr} ${suffix}`;
 }
 
-function brickPicture(color, className = "") {
-  const pic = document.createElement("picture");
-  if (className) pic.className = className;
-  const source = document.createElement("source");
-  source.type = "image/webp";
-  source.srcset = `assets/renders/brick-${color}-400.webp 400w, assets/renders/brick-${color}.webp 1000w`;
-  source.sizes = "(max-width: 767px) 15vw, 14vw";
-  const img = document.createElement("img");
-  img.src = `assets/renders/brick-${color}.png`;
-  img.width = 1000;
-  img.height = 507;
-  img.alt = "";
-  img.loading = "lazy";
-  img.decoding = "async";
-  pic.append(source, img);
-  return pic;
+function platformMarker(className = "") {
+  const platform = document.createElement("span");
+  platform.className = className;
+  platform.setAttribute("aria-hidden", "true");
+  return platform;
 }
 
 function buildWeek(weekEl, schedule) {
@@ -85,10 +74,9 @@ function buildWeek(weekEl, schedule) {
     const li = document.createElement("li");
     li.className = "day";
 
-    const brick = document.createElement("div");
-    brick.className = "day__brick";
-    brick.append(brickPicture("red"));
-    if (blocks.length) brick.append(brickPicture("amber", "day__half"));
+    const marker = document.createElement("span");
+    marker.className = "day__marker";
+    marker.setAttribute("aria-hidden", "true");
 
     const name = document.createElement("span");
     name.className = "day__name";
@@ -109,7 +97,7 @@ function buildWeek(weekEl, schedule) {
       ? `${DAY_LONG[d]}: away ${blocks.map((b) => `${fmtHour(b.start)} to ${fmtHour(b.end)} ${schedule.tzLabel}`).join(", ")}, around the rest of the day`
       : `${DAY_LONG[d]}: available`;
 
-    li.append(brick, name, note, spoken);
+    li.append(marker, name, note, spoken);
     frag.append(li);
     items[d] = li;
   }

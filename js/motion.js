@@ -172,7 +172,7 @@ export function initMotion() {
     { scale: 1, rotate: 0, ease: "none", scrollTrigger: { trigger: ".vouches", start: "top bottom", end: "top 20%", scrub: true } }
   );
 
-  // ---------- Availability: bricks are placed one by one, then he sits down ----------
+  // ---------- Availability: the week and avatar are revealed on the red platform ----------
   ScrollTrigger.create({
     trigger: ".week-stage",
     start: "top 78%",
@@ -180,7 +180,7 @@ export function initMotion() {
     onEnter: () => {
       gsap
         .timeline({ defaults: { ease: "expo.out" } })
-        .fromTo(".day__brick", { opacity: 0, y: -48, yPercent: 0 }, { opacity: 1, y: 0, duration: 1, stagger: 0.07 })
+        .fromTo(".day__marker", { opacity: 0, y: -48, yPercent: 0 }, { opacity: 1, y: 0, duration: 1, stagger: 0.07 })
         .fromTo("[data-sit]", { opacity: 0, y: -36, yPercent: 0 }, { opacity: 1, y: 0, duration: 1.2 }, "-=0.45");
     },
   });

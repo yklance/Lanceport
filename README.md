@@ -14,8 +14,7 @@ Design rules and the reasoning behind them are in `DESIGN.md`.
 - [js/motion.js](file:///c:/Users/binon/Downloads/new%20lance%20port%20discord%202.0/js/motion.js) GSAP, ScrollTrigger and Lenis smooth scroll
 - [data/vouches.js](file:///c:/Users/binon/Downloads/new%20lance%20port%20discord%202.0/data/vouches.js) the vouches
 - [data/schedule.js](file:///c:/Users/binon/Downloads/new%20lance%20port%20discord%202.0/data/schedule.js) availability in New York (Eastern Time)
-- [assets/renders/](file:///c:/Users/binon/Downloads/new%20lance%20port%20discord%202.0/assets/renders/) the R6 renders (hero, wave, point, jump, sit, headshot, bricks)
-- [assets/textures/baseplate.png](file:///c:/Users/binon/Downloads/new%20lance%20port%20discord%202.0/assets/textures/baseplate.png) classic Roblox stud tile
+- [assets/renders/](file:///c:/Users/binon/Downloads/new%20lance%20port%20discord%202.0/assets/renders/) Lance avatar renders and section images
 - [assets/icons/](file:///c:/Users/binon/Downloads/new%20lance%20port%20discord%202.0/assets/icons/) favicon, apple touch icon, arrow icons
 - [assets/og.png](file:///c:/Users/binon/Downloads/new%20lance%20port%20discord%202.0/assets/og.png) social link preview image (1200 x 630)
 - [assets/vouches/](file:///c:/Users/binon/Downloads/new%20lance%20port%20discord%202.0/assets/vouches/) headshots of the people who vouched

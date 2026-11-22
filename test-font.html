@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@900&family=Oswald:wght@700&family=Barlow+Condensed:wght@900&family=Anton&display=swap" rel="stylesheet">
+<style>
+body { background: #B5121B; color: white; font-family: sans-serif; padding: 40px; }
+.word {
+  font-family: "Big Shoulders Display";
+  font-weight: 900;
+  font-size: 140px;
+  line-height: 0.8;
+  display: flex;
+}
+.word span { display: inline-block; border-bottom: 2px solid yellow; border-top: 2px solid yellow; }
+.alt-n-barlow { font-family: "Barlow Condensed"; font-weight: 900; transform: scaleY(1.05); }
+.alt-n-oswald { font-family: "Oswald"; font-weight: 700; }
+.alt-n-anton { font-family: "Anton"; }
+</style>
+</head>
+<body>
+<h1>Default Big Shoulders Display:</h1>
+<div class="word">
+  <span>L</span><span>A</span><span>N</span><span>C</span><span>E</span>
+</div>
+
+<h1>With Barlow Condensed N:</h1>
+<div class="word">
+  <span>L</span><span>A</span><span class="alt-n-barlow">N</span><span>C</span><span>E</span>
+</div>
+
+<h1>With Anton N:</h1>
+<div class="word">
+  <span>L</span><span>A</span><span class="alt-n-anton">N</span><span>C</span><span>E</span>
+</div>
+</body>
+</html>
